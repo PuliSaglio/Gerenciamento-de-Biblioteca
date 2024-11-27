@@ -5,11 +5,11 @@ O projeto será uma API back-end para gerenciar uma biblioteca. Ele será basead
 2. Requisitos
    Funcionalidades:
 
-   Cadastro de livros
+   - Cadastro de livros: 
    Título, autor, ISBN, categoria.
-   Cadastro de usuários
+   - Cadastro de usuários:
    Nome, ID, email.
-   Gerenciamento de empréstimos
+   - Gerenciamento de empréstimos:
    Registrar empréstimos e devoluções.
    Relatórios
    Listar livros disponíveis.
@@ -28,9 +28,9 @@ Ferramentas/Tecnologias:
 3. Estrutura do Projeto
    Pacotes:
 
-   com.biblioteca.model: Classes do modelo.
-   com.biblioteca.service: Regras de negócio.
-   com.biblioteca.repository: Simulação de banco de dados com coleções.
-   com.biblioteca.controller: Ponto de entrada das funcionalidades.
-   com.biblioteca.utils: Utilitários.
-   com.biblioteca.test: Testes unitários e de integração.
+   - com.biblioteca.model: Classes do modelo.
+   - com.biblioteca.service: Regras de negócio.
+   - com.biblioteca.repository: Simulação de banco de dados com coleções.
+   - com.biblioteca.controller: Ponto de entrada das funcionalidades.
+   - com.biblioteca.utils: Utilitários.
+   - com.biblioteca.test: Testes unitários e de integração.
