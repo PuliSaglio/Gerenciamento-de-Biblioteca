@@ -6,10 +6,6 @@ public class Usuario {
     private String nome;
     private String email;
 
-    public Usuario() {
-
-    }
-
     public Usuario(String nome, String email) {
         this.ID = contadorID++;
         this.nome = nome;

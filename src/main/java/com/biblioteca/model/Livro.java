@@ -3,18 +3,17 @@ package com.biblioteca.model;
 public class Livro {
     private String titulo;
     private String autor;
-    private String ISBN;
+    private String isbn;
     private String categoria;
     private boolean disponivel;
 
-    public Livro() {}
 
-    public Livro(String titulo, String autor, String ISBN, String categoria , boolean disponivel) {
+    public Livro(String titulo, String autor, String isbn, String categoria , boolean disponivel) {
         this.titulo = titulo;
         this.autor = autor;
-        this.ISBN = ISBN;
+        this.isbn = isbn;
         this.categoria = categoria;
-        this.disponivel = false;
+        this.disponivel = disponivel;
     }
 
     public String getTitulo(){
@@ -32,11 +31,11 @@ public class Livro {
     }
 
     public String getISBN(){
-        return ISBN;
+        return isbn;
     }
 
-    public void setISBN(String ISBN){
-        this.ISBN = ISBN;
+    public void setISBN(String isbn){
+        this.isbn = isbn;
 
     }
 
@@ -53,6 +52,17 @@ public class Livro {
     }
     public void setDisponivel(boolean disponivel){
         this.disponivel = disponivel;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", disponivel=" + disponivel +
+                '}';
     }
 }
 
