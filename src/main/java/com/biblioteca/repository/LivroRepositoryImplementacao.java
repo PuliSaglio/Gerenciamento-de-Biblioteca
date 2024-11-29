@@ -25,32 +25,13 @@ public class LivroRepositoryImplementacao implements LivroRepository {
     }
 
     public Optional<Livro> buscarPorTitulo(String titulo){
-        //nao funciona porque eu preciso passar a key do hashmap
-//        como estou passando um titulo que nao é uma key ele retorna null
-//        preciso dar um jeito de acessar a key por meio do titulo ou vice versa
-        return Optional.ofNullable(livros.get(titulo));
+        //soluçao será ineficiente pois tenho que iterar toda a lista para encontrar o titulo
+        return Optional.of(livros.values().stream().filter(livro -> livro.getTitulo().equals(titulo)).findFirst().get());
     }
 
     public List<Livro> listarTodos(){
+
         return new ArrayList<Livro>(livros.values());
     }
 
-    public static void main(String args[]){
-        LivroRepositoryImplementacao livro = new LivroRepositoryImplementacao();
-
-        livro.salvar(new Livro("O pequeno principe", "autor legal" , "123-123-123-x", "Fantasia" , true));
-        livro.salvar(new Livro("Diario de um banana", "autor divertido", "122-122-122-x", "Comédia" , false));
-
-        System.out.println("Listando todos..." +
-        livro.listarTodos());
-        System.out.println("Buscando por ISBN..." +
-        livro.buscarPorIsbn("123-123-123-x"));
-        System.out.println("Buscando por titulo..." +
-        livro.buscarPorTitulo("Diario de um banana"));
-
-        livro.excluir("123-123-123-x");
-        System.out.println("Listando todos ..." +
-        livro.listarTodos());
-
-    }
 }
