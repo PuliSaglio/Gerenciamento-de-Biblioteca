@@ -25,7 +25,6 @@ public class LivroRepositoryImplementacao implements LivroRepository {
     }
 
     public Optional<Livro> buscarPorTitulo(String titulo){
-        //soluçao será ineficiente pois tenho que iterar toda a lista para encontrar o titulo
         return Optional.of(livros.values().stream().filter(livro -> livro.getTitulo().equals(titulo)).findFirst().get());
     }
 
