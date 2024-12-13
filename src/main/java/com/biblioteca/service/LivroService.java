@@ -18,8 +18,8 @@ public class LivroService{
     }
 
 
-    private void verificaDuplicidade(Livro livro) {
-        if (livroRepository.buscarPorIsbn(livro.getISBN()).isPresent()) {
+    private void verificaDuplicidade(String isbn) {
+        if (livroRepository.buscarPorIsbn(isbn).isPresent()) {
             throw new IsbnDuplicadoException("Já existe um livro com esse ISBN");
         }
     }
@@ -37,7 +37,7 @@ public class LivroService{
     }
 
     public void adicionarLivro(Livro livro){
-        verificaDuplicidade(livro);
+        verificaDuplicidade(livro.getISBN());
         livroRepository.salvar(livro);
     }
 
