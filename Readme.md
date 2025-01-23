@@ -1,36 +1,97 @@
-Sistema de Gerenciamento de Biblioteca Online. Este sistema permitirá gerenciar livros, usuários e empréstimos de livros, e contará com funcionalidades básicas, como cadastro, consulta, e relatórios.
-1. Descrição do Projeto
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/jidp6Ter)
+# Biblioteca API
 
-O projeto será uma API back-end para gerenciar uma biblioteca. Ele será baseado em conceitos de orientação a objetos, utilizando boas práticas, e contará com testes automatizados com JUnit.
-2. Requisitos
-   Funcionalidades:
+## Propósito do Projeto
+Este projeto consiste em uma API desenvolvida para gerenciar uma biblioteca. A aplicação permite realizar operações como cadastrar, buscar, alterar e excluir livros e usuários, além de gerenciar empréstimos e devoluções de livros.
 
-   - Cadastro de livros: 
-   Título, autor, ISBN, categoria.
-   - Cadastro de usuários:
-   Nome, ID, email.
-   - Gerenciamento de empréstimos:
-   Registrar empréstimos e devoluções.
-   Relatórios
-   Listar livros disponíveis.
-   Listar usuários com empréstimos atrasados.
-   Filtros e consultas
-   Consultar livros por categoria ou autor.
+O objetivo é fornecer um sistema robusto e documentado para facilitar o gerenciamento de bibliotecas, com ênfase em boas práticas de desenvolvimento e uso de tecnologias modernas.
 
-Ferramentas/Tecnologias:
+## Participantes
+- Ignacio Saglio Rossini
 
-    JUnit: Para testes unitários e integração.
-    Maven: Para gerenciamento de dependências e build.
-    Stream API: Para manipulação de listas e coleções.
-    Collections Framework: Para armazenar e organizar dados.
-    Orientação a Objetos: Para modelar o sistema.
+## Link da Gravação do Vídeo
+[Assista ao vídeo de apresentação do projeto](https://example.com)
 
-3. Estrutura do Projeto
-   Pacotes:
+## Organização do Projeto
+O projeto foi estruturado seguindo os princípios de arquitetura em camadas (Controller, Service, Repository). Cada camada desempenha uma função específica:
 
-   - com.biblioteca.model: Classes do modelo.
-   - com.biblioteca.service: Regras de negócio.
-   - com.biblioteca.repository: Simulação de banco de dados com coleções.
-   - com.biblioteca.controller: Ponto de entrada das funcionalidades.
-   - com.biblioteca.utils: Utilitários.
-   - com.biblioteca.test: Testes unitários e de integração.
+1. **Controller**: Lida com as requisições HTTP e interage com o Service.
+2. **Service**: Contém a lógica de negócio e validações.
+3. **Repository**: Gerencia os dados, utilizando estruturas de dados em memória.
+
+### Diagrama de Classes
+```plaintext
++----------------+       +------------------+       +------------------+
+| Livro          |       | Usuario          |       | Emprestimo       |
+|----------------|       |------------------|       |------------------|
+| titulo         |       | nome             |       | idTransacao      |
+| autor          |       | email            |       | dataEmprestimo   |
+| isbn           |       | id               |       | dataDevolucao    |
+| disponivel     |       |                  |       |                  |
++----------------+       +------------------+       +------------------+
+     |                          |                        |
+     |                          |                        |
+     v                          v                        v
++----------------+       +------------------+       +----------------------+
+| LivroRepository|       | UsuarioRepository|       | EmprestimoRepository|
++----------------+       +------------------+       +----------------------+
+     ^                          ^                        ^
+     |                          |                        |
+     |                          |                        |
++----------------+       +------------------+       +------------------+
+| LivroService   |       | UsuarioService   |       | EmprestimoService |
++----------------+       +------------------+       +------------------+
+     ^                          ^                        ^
+     |                          |                        |
++----------------+       +------------------+       +----------------------+
+| LivroController|       | UsuarioController|       | EmprestimoController|
++----------------+       +------------------+       +----------------------+
+```
+
+## Instruções de Como Realizar o Build
+
+1. Certifique-se de ter o [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) ou superior instalado.
+2. Instale o [Maven](https://maven.apache.org/install.html).
+3. Clone o repositório do projeto:
+   ```bash
+   git clone https://github.com/usuario/projeto-biblioteca.git
+   ```
+4. Navegue até o diretório do projeto:
+   ```bash
+   cd projeto-biblioteca
+   ```
+5. Execute o seguinte comando para compilar o projeto:
+   ```bash
+   mvn clean install
+   ```
+
+## Instruções de Como Executar
+
+1. Após realizar o build, execute o projeto utilizando o Maven:
+   ```bash
+   mvn spring-boot:run
+   ```
+2. A API estará disponível em `http://localhost:8080`.
+3. Acesse a documentação do Swagger em:
+   ```
+   http://localhost:8080/swagger-ui/index.html
+   ```
+
+## Endpoints Principais
+- **Livros**:
+    - `POST /livros`: Cadastrar um novo livro.
+    - `GET /livros/{isbn}`: Buscar um livro pelo ISBN.
+    - `PUT /livros/{isbn}`: Atualizar informações de um livro.
+    - `DELETE /livros/{isbn}`: Excluir um livro.
+
+- **Usuários**:
+    - `POST /usuarios`: Cadastrar um novo usuário.
+    - `GET /usuarios/{id}`: Buscar um usuário pelo ID.
+    - `PUT /usuarios/{id}`: Atualizar informações de um usuário.
+    - `DELETE /usuarios/{id}`: Excluir um usuário.
+
+- **Empréstimos**:
+    - `POST /emprestimos`: Registrar um novo empréstimo.
+    - `PUT /emprestimos/{idTransacao}`: Registrar a devolução de um livro.
+
+
